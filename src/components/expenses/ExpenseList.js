@@ -1,6 +1,7 @@
 import ExpenseItem from "./expenses/ExpenseItem";
 
 export default function ExpenseList({ expenses }) {
+  // Renders a list of expenses
   if (expenses.length === 0) return <p>No expenses to display.</p>;
 
   return (
