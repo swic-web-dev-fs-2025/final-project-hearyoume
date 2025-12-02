@@ -1,4 +1,5 @@
 export default function FilterControls({ filter, setFilter }) {
+  // Renders radio buttons to filter expenses by recurrence type
   return (
     <div>
       <label>Filter by Recurrence:</label>
