@@ -2,10 +2,11 @@ import ExpenseItem from "./expense-item";
 
 export default function ExpenseList({ expenses }) {
   // Renders a list of expenses
-  if (expenses.length === 0) return <p>No expenses to display.</p>;
+  if (expenses.length === 0)
+    return <p className="text-gray-600">No expenses to display.</p>;
 
   return (
-    <ul>
+    <ul className="divide-y divide-gray-200 bg-white rounded-md shadow overflow-hidden">
       {expenses.map((expense) => (
         <ExpenseItem key={expense.id} expense={expense} />
       ))}
