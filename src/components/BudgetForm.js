@@ -2,6 +2,7 @@
 import { useState } from "react";
 
 export default function BudgetForm({ onAddExpense }) {
+  // Form to add a new expense
   const [amount, setAmount] = useState("");
   const [place, setPlace] = useState("");
   const [category, setCategory] = useState("Food");
