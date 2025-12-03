@@ -1,17 +1,14 @@
-import useExpense from "../hook/use-expense";
-
-export default function BudgetForm({ onAddExpense }) {
-  const {
-    amount,
-    setAmount,
-    place,
-    setPlace,
-    category,
-    setCategory,
-    recurring,
-    setRecurring,
-  } = useExpense();
-
+export default function BudgetForm({
+  amount,
+  setAmount,
+  place,
+  setPlace,
+  category,
+  setCategory,
+  recurring,
+  setRecurring,
+  onAddExpense,
+}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const expense = {
@@ -28,34 +25,55 @@ export default function BudgetForm({ onAddExpense }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="amount-input">Amount:</label>
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white p-4 rounded-md shadow space-y-4"
+    >
+      <div className="mb-2">
+        <label
+          htmlFor="amount-input"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Amount:
+        </label>
         <input
           id="amount-input"
           type="number"
           name="amount"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
+          className="w-full border border-gray-300 rounded px-2 py-1"
         />
       </div>
-      <div>
-        <label htmlFor="place-input">Where it was spent:</label>
+      <div className="mb-2">
+        <label
+          htmlFor="place-input"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Where it was spent:
+        </label>
         <input
           id="place-input"
           type="text"
           name="place"
           value={place}
           onChange={(e) => setPlace(e.target.value)}
+          className="w-full border border-gray-300 rounded px-2 py-1"
         />
       </div>
-      <div>
-        <label htmlFor="category-select">Category:</label>
+      <div className="mb-2">
+        <label
+          htmlFor="category-select"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Category:
+        </label>
         <select
           id="category-select"
           name="category"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
+          className="w-full border border-gray-300 rounded px-2 py-1"
         >
           <option value="Groceries">Groceries</option>
           <option value="Eating Out">Eating Out</option>
@@ -68,32 +86,45 @@ export default function BudgetForm({ onAddExpense }) {
         </select>
       </div>
 
-      <fieldset>
-        <legend>Recurrence</legend>
-        <div>
-          <input
-            id="recurring-monthly"
-            type="radio"
-            name="recurring"
-            value="monthly"
-            checked={recurring === "monthly"}
-            onChange={(e) => setRecurring(e.target.value)}
-          />
-          <label htmlFor="recurring-monthly">Monthly</label>
-        </div>
-        <div>
-          <input
-            id="recurring-one-time"
-            type="radio"
-            name="recurring"
-            value="one-time"
-            checked={recurring === "one-time"}
-            onChange={(e) => setRecurring(e.target.value)}
-          />
-          <label htmlFor="recurring-one-time">One-time</label>
+      <fieldset className="mt-3 border-t pt-3">
+        <legend className="text-sm font-medium mb-2">Recurrence</legend>
+        <div className="flex items-center gap-3">
+          <div className="flex items-center">
+            <input
+              id="recurring-monthly"
+              type="radio"
+              name="recurring"
+              value="monthly"
+              checked={recurring === "monthly"}
+              onChange={(e) => setRecurring(e.target.value)}
+              className="h-4 w-4"
+            />
+            <label htmlFor="recurring-monthly" className="ml-2 text-sm">
+              Monthly
+            </label>
+          </div>
+          <div className="flex items-center">
+            <input
+              id="recurring-one-time"
+              type="radio"
+              name="recurring"
+              value="one-time"
+              checked={recurring === "one-time"}
+              onChange={(e) => setRecurring(e.target.value)}
+              className="h-4 w-4"
+            />
+            <label htmlFor="recurring-one-time" className="ml-2 text-sm">
+              One-time
+            </label>
+          </div>
         </div>
       </fieldset>
-      <button type="submit">Add Expense</button>
+      <button
+        type="submit"
+        className="mt-3 bg-indigo-600 text-white px-4 py-2 rounded"
+      >
+        Add Expense
+      </button>
     </form>
   );
 }

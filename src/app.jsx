@@ -6,11 +6,26 @@ import useExpense from "./hook/use-expense";
 
 export default function App() {
   // Main application component
-  const { expenses, setExpenses, filter, setFilter } = useExpense();
+  const {
+    expenses,
+    setExpenses,
+    filter,
+    setFilter,
+    amount,
+    setAmount,
+    place,
+    setPlace,
+    category,
+    setCategory,
+    recurring,
+    setRecurring,
+    addExpense,
+  } = useExpense();
 
   const handleAddExpense = (expense) => {
-    setExpenses([...expenses, expense]);
+    addExpense(expense);
   };
+
   // Filter expenses based on recurrence type
   const filteredExpenses = expenses.filter((expense) => {
     if (filter === "all") return true;
@@ -19,28 +34,48 @@ export default function App() {
 
   return (
     <>
-      <header>
-        <h1>Budget Tracker</h1>
+      <header className="bg-indigo-600 text-white py-6">
+        <h1 className="text-2xl font-bold text-center">Budget Tracker</h1>
       </header>
-      <main>
-        <section aria-labelledby="add-expense-heading">
+      <main className="max-w-4xl mx-auto p-6 grid gap-6 md:grid-cols-3">
+        <section
+          aria-labelledby="add-expense-heading"
+          className="md:col-span-2"
+        >
           <h2 id="add-expense-heading" className="sr-only">
             Add Expense
           </h2>
-          <BudgetForm onAddExpense={handleAddExpense} />
+          <BudgetForm
+            amount={amount}
+            setAmount={setAmount}
+            place={place}
+            setPlace={setPlace}
+            category={category}
+            setCategory={setCategory}
+            recurring={recurring}
+            setRecurring={setRecurring}
+            onAddExpense={handleAddExpense}
+          />
         </section>
 
-        <nav aria-label="Filters">
+        <nav aria-label="Filters" className="md:col-span-2">
           <FilterControls filter={filter} setFilter={setFilter} />
         </nav>
 
-        <section aria-labelledby="expenses-heading">
-          <h2 id="expenses-heading">Expenses</h2>
+        <section aria-labelledby="expenses-heading" className="md:col-span-2">
+          <h2 id="expenses-heading" className="text-xl font-semibold mb-2">
+            Expenses
+          </h2>
           <ExpenseList expenses={filteredExpenses} />
         </section>
 
-        <aside aria-labelledby="summary-heading">
-          <h2 id="summary-heading">Category Summary</h2>
+        <aside
+          aria-labelledby="summary-heading"
+          className="bg-gray-50 p-4 rounded-md shadow"
+        >
+          <h2 id="summary-heading" className="text-lg font-medium">
+            Category Summary
+          </h2>
           <CategorySummary expenses={expenses} />
         </aside>
       </main>
