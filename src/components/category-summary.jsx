@@ -6,9 +6,9 @@ export default function CategorySummary({ category, expenses }) {
   );
 
   return (
-    <div>
-      <h3>{category}</h3>
+    <section aria-labelledby="category-summary-heading">
+      <h3 id="category-summary-heading">{category ?? "All Categories"}</h3>
       <p>Total Spent: ${categoryTotal.toFixed(2)}</p>
-    </div>
+    </section>
   );
 }
