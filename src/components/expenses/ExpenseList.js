@@ -7,9 +7,7 @@ export default function ExpenseList({ expenses }) {
   return (
     <ul>
       {expenses.map((expense) => (
-        <li key={expense.id}>
-          <ExpenseItem expense={expense} />
-        </li>
+        <ExpenseItem key={expense.id} expense={expense} />
       ))}
     </ul>
   );
