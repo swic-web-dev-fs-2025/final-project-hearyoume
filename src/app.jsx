@@ -1,14 +1,12 @@
-import { useState } from "react";
-
 import BudgetForm from "./components/budget-form";
 import CategorySummary from "./components/category-summary";
 import ExpenseList from "./components/expenses/expense-list";
 import FilterControls from "./components/filter-controls";
+import useExpense from "./hook/use-expense";
 
 export default function App() {
   // Main application component
-  const [expenses, setExpenses] = useState([]);
-  const [filter, setFilter] = useState("all");
+  const { expenses, setExpenses, filter, setFilter } = useExpense();
 
   const handleAddExpense = (expense) => {
     setExpenses([...expenses, expense]);
