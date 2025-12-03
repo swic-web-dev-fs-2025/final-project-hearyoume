@@ -30,24 +30,33 @@ export default function BudgetForm({ onAddExpense }) {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label>Amount:</label>
+        <label htmlFor="amount-input">Amount:</label>
         <input
+          id="amount-input"
           type="number"
+          name="amount"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
       </div>
       <div>
-        <label>Where it was spent:</label>
+        <label htmlFor="place-input">Where it was spent:</label>
         <input
+          id="place-input"
           type="text"
+          name="place"
           value={place}
           onChange={(e) => setPlace(e.target.value)}
         />
       </div>
       <div>
-        <label>Category:</label>
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+        <label htmlFor="category-select">Category:</label>
+        <select
+          id="category-select"
+          name="category"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        >
           <option value="Groceries">Groceries</option>
           <option value="Eating Out">Eating Out</option>
           <option value="Transportation">Transportation</option>
@@ -59,26 +68,31 @@ export default function BudgetForm({ onAddExpense }) {
         </select>
       </div>
 
-      <div>
-        <label>
+      <fieldset>
+        <legend>Recurrence</legend>
+        <div>
           <input
+            id="recurring-monthly"
             type="radio"
+            name="recurring"
             value="monthly"
             checked={recurring === "monthly"}
             onChange={(e) => setRecurring(e.target.value)}
           />
-          Monthly
-        </label>
-        <label>
+          <label htmlFor="recurring-monthly">Monthly</label>
+        </div>
+        <div>
           <input
+            id="recurring-one-time"
             type="radio"
+            name="recurring"
             value="one-time"
             checked={recurring === "one-time"}
             onChange={(e) => setRecurring(e.target.value)}
           />
-          One-time
-        </label>
-      </div>
+          <label htmlFor="recurring-one-time">One-time</label>
+        </div>
+      </fieldset>
       <button type="submit">Add Expense</button>
     </form>
   );
