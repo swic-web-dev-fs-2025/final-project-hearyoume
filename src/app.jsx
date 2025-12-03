@@ -18,12 +18,32 @@ export default function App() {
   });
 
   return (
-    <div>
-      <h1>Budget Tracker</h1>
-      <BudgetForm onAddExpense={handleAddExpense} />
-      <FilterControls filter={filter} setFilter={setFilter} />
-      <ExpenseList expenses={filteredExpenses} />
-      <CategorySummary expenses={expenses} />
-    </div>
+    <>
+      <header>
+        <h1>Budget Tracker</h1>
+      </header>
+      <main>
+        <section aria-labelledby="add-expense-heading">
+          <h2 id="add-expense-heading" className="sr-only">
+            Add Expense
+          </h2>
+          <BudgetForm onAddExpense={handleAddExpense} />
+        </section>
+
+        <nav aria-label="Filters">
+          <FilterControls filter={filter} setFilter={setFilter} />
+        </nav>
+
+        <section aria-labelledby="expenses-heading">
+          <h2 id="expenses-heading">Expenses</h2>
+          <ExpenseList expenses={filteredExpenses} />
+        </section>
+
+        <aside aria-labelledby="summary-heading">
+          <h2 id="summary-heading">Category Summary</h2>
+          <CategorySummary expenses={expenses} />
+        </aside>
+      </main>
+    </>
   );
 }
