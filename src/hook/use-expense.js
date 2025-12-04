@@ -9,19 +9,12 @@ export default function useExpense() {
   const [category, setCategory] = useState("Food");
   const [recurring, setRecurring] = useState("one-time");
 
-  // Persistent counter for unique IDs
-  const [counter, setCounter] = useLocalStorage("expenseCounter", 0);
-
   const addExpense = (expense) => {
-    const newId = counter + 1;
-    const newExpense = { id: newId, ...expense };
-    setExpenses([...expenses, newExpense]);
-    setCounter(newId); // update counter in localStorage
+    setExpenses((prevExpenses) => [...prevExpenses, expense]);
   };
 
   return {
     expenses,
-    setExpenses,
     filter,
     setFilter,
     amount,
