@@ -1,3 +1,5 @@
+import { formatCurrency } from "../utils/format-currency";
+
 export default function CategorySummary({ expenses = [] }) {
   // Group expenses by category
   const grouped = expenses.reduce((acc, expense) => {
@@ -6,13 +8,6 @@ export default function CategorySummary({ expenses = [] }) {
     acc[cat].push(expense);
     return acc;
   }, {});
-
-  // Helper to format currency
-  const formatCurrency = (amount) =>
-    new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(amount);
 
   return (
     <section className="bg-white p-4 rounded-md mt-6 space-y-4">
