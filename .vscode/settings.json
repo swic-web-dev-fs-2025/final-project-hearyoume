@@ -18,5 +18,11 @@
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ],
-  "cSpell.words": ["labelledby", "uidotdev", "usehooks", "uuidv"]
+  "cSpell.words": [
+    "labelledby",
+    "uidotdev",
+    "Uncategorized",
+    "usehooks",
+    "uuidv"
+  ]
 }
