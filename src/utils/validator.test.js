@@ -8,6 +8,7 @@ describe("isValidAmount", () => {
     expect(isValidAmount(10)).toBe(true);
     expect(isValidAmount("25.5")).toBe(true);
     expect(isValidAmount(0.01)).toBe(true);
+    expect(isValidAmount("9".repeat(10))).toBe(true);
   });
 
   it("should return false for non-positive numbers", () => {
