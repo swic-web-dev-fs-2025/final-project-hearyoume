@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import { isValidAmount, isValidPlace } from "../utils/validators";
 
+// BudgetForm component for adding a new expense
 export default function BudgetForm({
   amount,
   setAmount,
@@ -13,11 +14,12 @@ export default function BudgetForm({
   setRecurring,
   onAddExpense,
 }) {
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     const expense = {
       id: uuidv4(), // always unique
-      amount: Number(Number(amount).toFixed(2)), // always 2 decimals
+      amount: parseFloat(amount).toFixed(2), // always 2 decimals
       place,
       category,
       recurring,
@@ -32,6 +34,7 @@ export default function BudgetForm({
   };
 
   return (
+    // Renders the budget form with validation feedback
     <form
       onSubmit={handleSubmit}
       className="bg-white p-4 rounded-md shadow space-y-4"
@@ -62,8 +65,8 @@ export default function BudgetForm({
           onChange={(e) => setPlace(e.target.value)}
           className={
             isValidPlace(place)
-              ? "w-full border border-green-500 rounded px-2 py-1" // valid style
-              : "w-full border border-red-500 rounded px-2 py-1" // invalid style
+              ? "text-green-600 w-full border rounded px-2 py-1" // valid style
+              : "text-red-600 w-full border rounded px-2 py-1" // invalid style
           }
         />
         {!isValidPlace(place) && (
@@ -89,9 +92,11 @@ export default function BudgetForm({
         >
           <option value="Groceries">Groceries</option>
           <option value="Eating Out">Eating Out</option>
-          <option value="Transportation">Transportation</option>
+          <option value="Vacation">Vacation</option>
           <option value="Entertainment">Entertainment</option>
           <option value="Utilities">Utilities</option>
+          <option value="Home Upkeep">Home Upkeep</option>
+          <option value="Mortgage">Mortgage</option>
           <option value="Health">Health</option>
           <option value="Amazon">Amazon</option>
           <option value="Other">Other</option>
@@ -134,7 +139,12 @@ export default function BudgetForm({
       </fieldset>
       <button
         type="submit"
-        className="mt-3 bg-indigo-600 text-white px-4 py-2 rounded"
+        disabled={!isValidAmount(amount) || !isValidPlace(place)}
+        className={`mt-3 px-4 py-2 rounded ${
+          !isValidAmount(amount) || !isValidPlace(place)
+            ? "bg-gray-400 cursor-not-allowed"
+            : "bg-indigo-600 text-white"
+        }`}
       >
         Add Expense
       </button>
