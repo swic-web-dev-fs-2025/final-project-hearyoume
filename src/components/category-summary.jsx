@@ -13,9 +13,7 @@ export default function CategorySummary({ category, expenses }) {
       <h3 id="category-summary-heading" className="text-lg font-semibold">
         {category ?? "All Categories"}
       </h3>
-      <p className="text-sm text-gray-600">
-        Total Spent: ${categoryTotal.toFixed(2)}
-      </p>
+      <p className="text-sm text-gray-600">Total Spent: ${categoryTotal}</p>
     </section>
   );
 }
