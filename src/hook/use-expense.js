@@ -6,8 +6,12 @@ export default function useExpense() {
   const [filter, setFilter] = useState("all");
   const [amount, setAmount] = useState("");
   const [place, setPlace] = useState("");
-  const [category, setCategory] = useState("Food");
+  const [category, setCategory] = useState("Amazon");
   const [recurring, setRecurring] = useState("one-time");
+  const [touchedAmount, setTouchedAmount] = useState(false);
+  const [touchedPlace, setTouchedPlace] = useState(false);
+
+
 
   const addExpense = (expense) => {
     setExpenses((prevExpenses) => [...prevExpenses, expense]);
@@ -26,5 +30,9 @@ export default function useExpense() {
     recurring,
     setRecurring,
     addExpense,
+    touchedAmount,
+    setTouchedAmount,
+    touchedPlace,
+    setTouchedPlace,
   };
 }
