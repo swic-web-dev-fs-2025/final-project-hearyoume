@@ -11,14 +11,13 @@ export default function useExpense() {
   const [touchedAmount, setTouchedAmount] = useState(false);
   const [touchedPlace, setTouchedPlace] = useState(false);
 
-
-
   const addExpense = (expense) => {
     setExpenses((prevExpenses) => [...prevExpenses, expense]);
   };
 
   return {
     expenses,
+    setExpenses,
     filter,
     setFilter,
     amount,
