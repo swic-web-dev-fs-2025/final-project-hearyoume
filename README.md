@@ -1,19 +1,41 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/h5wTyc4j)
-# React + Vite
+# 💰 Budget Tracker App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple, maintainable React application for tracking personal expenses. Users can add expenses with details like amount, place, category, and recurrence type, then view summaries by category or filter by recurrence. Data is persisted in localeStorage so expenses remain across sessions.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Add Expenses: Enter amount, place, category, and recurrence (one-time or monthly) in the BudgetForm.
 
-## React Compiler
+- Persistent Storage: Expenses are saved in `localStorage1 through the useExpenses custom hook.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Delete Expenses: Each expense has a delete button to remove it from the list.
 
-Note: This will impact Vite dev & build performances.
+- Filter Controls: Radio buttons allow filtering by all, one-time, or monthly expenses.
 
-## Expanding the ESLint configuration
+- Category Summary: Totals are grouped by category using the reduce method.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Validation: Gentle, immediate feedback for invalid inputs (via validators.js).
+
+- Currency Formatting: Amounts are displayed with proper currency formatting (format-currency.js).
+
+- Test Coverage: Validation logic is tested with validator.test.js.
+
+## Implementation Highlights
+
+- Custom Hook (useExpense)- Centralizes all state including, expenses, form inputs, filter selection, and validation flags. It also exposes addExpense and deleteExpense for expense handling.
+
+- Parent Component (app.jsx)- Puts BudgetForm, FilterControls, ExpenseList, and CategorySummary together in working order, passing state and handlers down with props.
+
+- Expense Flow
+
+1. User fills out the BudgetForm and clicks Add Expense.
+2. Expense object (with unique id) is added via addExpense.
+3. ExpenseList maps over filtered expenses and renders each ExpenseItem.
+4. Clicking Delete calls deleteExpense(id) to remove it.
+5. CategorySummary calculates totals by category.
+
+## Utilities
+
+- format-currency.js: Ensures amounts are displayed consistently.
+- validators.js: Provides reusable validation logic.
+- validator.test.js: Confirms validation rules behave as expected.
