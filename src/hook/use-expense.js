@@ -15,10 +15,8 @@ export default function useExpense() {
     setExpenses((prevExpenses) => [...prevExpenses, expense]);
   };
 
-  const deleteExpense = (expense) => {
-    setExpenses((prevExpenses) =>
-      prevExpenses.filter((e) => e.id !== expense.id)
-    );
+  const deleteExpense = (id) => {
+    setExpenses((prevExpenses) => prevExpenses.filter((e) => e.id !== id));
   };
 
   return {
