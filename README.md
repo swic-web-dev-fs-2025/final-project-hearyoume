@@ -6,7 +6,7 @@ A simple, maintainable React application for tracking personal expenses. Users c
 
 - Add Expenses: Enter amount, place, category, and recurrence (one-time or monthly) in the BudgetForm.
 
-- Persistent Storage: Expenses are saved in `localStorage1 through the useExpenses custom hook.
+- Persistent Storage: Expenses are saved in `localStorage through the useExpenses custom hook.
 
 - Delete Expenses: Each expense has a delete button to remove it from the list.
 
